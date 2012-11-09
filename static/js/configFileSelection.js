@@ -1,0 +1,2 @@
+function ConfigFileSelectionCtrl($scope) {
+};

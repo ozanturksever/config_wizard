@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" ng-app="wizard">
+<head>
+    <meta charset="utf-8">
+    <title>Transporter Client</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="css/app.css"/> -->
+</head>
+<body>
+<div id="content">
+    <ng-view></ng-view>
+    <div ng-controller="WizardCtrl">
+        <button id="goToNextStep" ng-click="goToNext()">Next</button>
+    </div>
+</div>
+
+<script src="/static/lib/jquery.min.js"></script>
+<script src="/static/lib/underscore-min.js"></script>
+<script src="/static/lib/angular/angular.js"></script>
+<script src="/static/lib/angular/angular-resource.js"></script>
+<script src="/static/js/selectLanguage.js"></script>
+<script src="/static/js/configFileSelection.js"></script>
+<script src="/static/js/wizard.js"></script>
+</body>
+</html>
