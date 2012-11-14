@@ -1,1 +1,1 @@
-var url = 'http://localhost:5000/static/index.html';
+var url = 'http://localhost:8000/index.html';

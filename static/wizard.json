@@ -1,0 +1,14 @@
+{
+    "/":{
+        "next":"/selectLanguage",
+        "prev":"/"
+    },
+    "/selectLanguage":{
+        "next":"/configFileSelection",
+        "prev":"/"
+    },
+    "/configFileSelection": {
+        "next":"/finish",
+        "prev":"/selectLanguage"
+    }
+}

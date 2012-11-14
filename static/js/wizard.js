@@ -7,21 +7,31 @@ angular.module('wizard', []).
             otherwise({redirectTo:'/'})
     });
 
-function WizardCtrl($scope, $location) {
-    $scope.currentStep = 'entry';
-    $scope.loc = $location;
+function WizardCtrl($scope, $location, $http) {
+    $scope.routeRules = {};
 
-    var wizardConfig = {
-        'entry':{'next':'selectLanguage', 'before':'entry'},
-        'entrySkip':{'next':'configFileSelection', 'before':'entry'},
-        'entryNoConfig':{'next':'configFileSelection', 'before':'entry'},
-        'selectLanguage':{'next':'configFileSelection', 'before':'entry'}
-    }
+    $http.get('wizard.json').success(function(data) {
+        $scope.routeRules = data;
+    });
 
     $scope.goToNext = function () {
-        if ($scope.currentStep == 'entry') {
-            $scope.currentStep = 'selectLanguage';
-            $location.path('/selectLanguage');
+        rule = _loadRule($location.$$path)
+        $location.path(rule['next']);
+    }
+
+    $scope.goToPrev = function () {
+        rule = _loadRule($location.$$path)
+        $location.path(rule['prev']);
+    }
+
+    function _loadRule(path) {
+        try {
+            routeRule = $scope.routeRules[path]
+            next = routeRule['next']
+            prev = routeRule['prev']
+        } catch (err) {
+            return {'next':'/', 'prev':'/'}
         }
+        return {'next':next, 'prev':prev}
     }
 }

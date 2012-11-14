@@ -3,23 +3,24 @@
 <head>
     <meta charset="utf-8">
     <title>Transporter Client</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <!-- <link rel="stylesheet" href="css/app.css"/> -->
 </head>
-<body>
-<div id="content">
+<body ng-controller="WizardCtrl">
+<div id="content" isloaded="{{ loaded }}">
     <ng-view></ng-view>
-    <div ng-controller="WizardCtrl">
+    <div >
         <button id="goToNextStep" ng-click="goToNext()">Next</button>
+        <button id="goToPrevStep" ng-click="goToPrev()">Prev</button>
     </div>
 </div>
 
-<script src="/static/lib/jquery.min.js"></script>
-<script src="/static/lib/underscore-min.js"></script>
-<script src="/static/lib/angular/angular.js"></script>
-<script src="/static/lib/angular/angular-resource.js"></script>
-<script src="/static/js/selectLanguage.js"></script>
-<script src="/static/js/configFileSelection.js"></script>
-<script src="/static/js/wizard.js"></script>
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/underscore-min.js"></script>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/angular/angular-resource.js"></script>
+<script src="/js/selectLanguage.js"></script>
+<script src="/js/configFileSelection.js"></script>
+<script src="/js/wizard.js"></script>
 </body>
 </html>
