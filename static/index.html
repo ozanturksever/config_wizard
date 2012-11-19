@@ -3,18 +3,24 @@
 <head>
     <meta charset="utf-8">
     <title>Transporter Client</title>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <!-- <link rel="stylesheet" href="css/app.css"/> -->
+    <link rel="stylesheet/less" href="/css/config_wizard.less">
+    <link rel="stylesheet/less" href="/css/entry.less">
 </head>
 <body ng-controller="WizardCtrl">
 <div id="content" isloaded="{{ loaded }}">
-    <ng-view></ng-view>
-    <div >
-        <button id="goToNextStep" ng-click="goToNext()">Next</button>
-        <button id="goToPrevStep" ng-click="goToPrev()">Prev</button>
+    <div id="config_wizard_container">
+        <div class="header">Header</div>
+        <div class="content">
+            <ng-view></ng-view>
+        </div>
+        <div class="navigation">
+            <button id="goToPrevStep" ng-click="goToPrev()" class="btn">Prev</button>
+            <button id="goToNextStep" ng-click="goToNext()" class="btn">Next</button>
+        </div>
     </div>
 </div>
 
+<script src="/lib/less-1.3.1.min.js"></script>
 <script src="/lib/jquery.min.js"></script>
 <script src="/lib/underscore-min.js"></script>
 <script src="/lib/angular/angular.js"></script>

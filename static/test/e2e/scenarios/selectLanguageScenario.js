@@ -7,9 +7,14 @@ describe('Select Language Step', function () {
         expect(browser().location().url()).toBe('/selectLanguage');
     });
 
-    it('can select turkish', function () {
+    xit('can select turkish', function () {
         element('#select_turkish_btn').click()
         expect(element('#selectedLanguage').text()).toBe('tr');
+    });
+    iit('can list posible languages', function( ) {
+
+        pause();
+       expect(repeater('ul li').count()).toBe(2)
     });
 
 });

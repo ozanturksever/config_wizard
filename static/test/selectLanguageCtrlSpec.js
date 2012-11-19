@@ -1,8 +1,13 @@
 describe('Language Selection Test', function () {
-    var scope, ctrl
+    var scope, ctrl, $httpBackend
 
-    beforeEach(inject(function ($rootScope, $controller) {
+    beforeEach(inject(function ($rootScope, $controller, _$httpBackend_) {
         scope = $rootScope.$new();
+        $httpBackend = _$httpBackend_
+        $httpBackend.expectGET('/supported_languages').respond([
+            {text:'Turkish'},
+            {text:'English'}
+        ]);
         ctrl = $controller(SelectLanguageCtrl,{$scope:scope});
     }));
 
