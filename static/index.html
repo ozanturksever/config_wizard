@@ -1,32 +1,55 @@
 <!doctype html>
 <html lang="en" ng-app="wizard">
-<head>
-    <meta charset="utf-8">
-    <title>Transporter Client</title>
-    <link rel="stylesheet/less" href="/css/config_wizard.less">
-    <link rel="stylesheet/less" href="/css/entry.less">
-</head>
-<body ng-controller="WizardCtrl">
-<div id="content" isloaded="{{ loaded }}">
-    <div id="config_wizard_container">
-        <div class="header">Header</div>
-        <div class="content">
-            <ng-view></ng-view>
-        </div>
-        <div class="navigation">
-            <button id="goToPrevStep" ng-click="goToPrev()" class="btn">Prev</button>
-            <button id="goToNextStep" ng-click="goToNext()" class="btn">Next</button>
-        </div>
-    </div>
-</div>
 
-<script src="/lib/less-1.3.1.min.js"></script>
-<script src="/lib/jquery.min.js"></script>
-<script src="/lib/underscore-min.js"></script>
-<script src="/lib/angular/angular.js"></script>
-<script src="/lib/angular/angular-resource.js"></script>
-<script src="/js/selectLanguage.js"></script>
-<script src="/js/configFileSelection.js"></script>
-<script src="/js/wizard.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Logsign Configuration Wizard</title>
+        <link rel="stylesheet/less" href="/css/config_wizard.less">
+        <link rel="stylesheet/less" href="/css/entry.less">
+
+        <script src="/lib/less-1.3.1.min.js"></script>
+        <script src="/lib/jquery.min.js"></script>
+        <script src="/lib/underscore-min.js"></script>
+        <script src="/lib/angular/angular.js"></script>
+        <script src="/lib/angular/angular-resource.js"></script>
+        <script src="/js/selectLanguage.js"></script>
+        <script src="/js/configFileSelection.js"></script>
+        <script src="/js/wizard.js"></script>
+    </head>
+
+    <body ng-controller="WizardCtrl">
+
+        <div id="content" isloaded="{{ loaded }}">
+
+            <div id="config_wizard_container">
+
+                <div class="header">header</div>
+
+                <div class="content">
+                    <ng-view></ng-view>
+                </div>
+
+                <div class="navigation">
+                    <table>
+                        <tr>
+                            <td width="10px">&nbsp;</td>
+                            <td width='120px'>
+                                <button id="goToPrevStep" ng-click="gotoprev()" class="btn">prev</button>
+                            </td>
+                            <td>&nbsp;</td>
+                            <td width="300px" align="right">
+                                <button id='skipBtn' class="btn btn-inverse"><i class="icon-check icon-white"></i> Skip</button>
+                                <button id="goToNextStep" ng-click="gotonext()" class="btn">next</button>
+                            </td>
+                            <td width="10px">&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
 </html>

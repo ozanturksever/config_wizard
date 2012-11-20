@@ -8,7 +8,7 @@ describe('Entry', function () {
     })
 
     it('should go to next step', function () {
-        element('#goToNextStep').click();
+        element('button#goToNextStep').click();
         expect(browser().location().url()).toBe('/selectLanguage');
     });
 

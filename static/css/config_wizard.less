@@ -1,27 +1,63 @@
 //@import "/css/bootswatch.less";
 @import "/css/bootstrap/bootstrap.less";
-@width:940px;
+@width      :940px;
+@height     :650px;
 
-@header_padding:30px 0 0 0;
+html{
+}
+
+body {
+    height: 100%;
+    background:url("../img/blur.png") center top no-repeat, url("../img/bg.png") repeat-x;
+}
 
 #config_wizard_container {
-  background: #FFFFFF;
-  width: @width;
-  margin: 0px auto;
-  padding: 5px;
-  border: 3px solid #333;
+      background: #FFFFFF;
+      width: @width; min-width:@width; max-width:@width;
+      height: @height; max-height: @height; min-height: @height;
+      margin: 0px auto;
+      margin-top:40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0px 0px 10px #666;
+      border-radius: 2px;
+      border:3px solid #000;
 
-  .header {
-    .well;
-    font-family: verdana;
-    margin-bottom: 5px;
-  }
-  .content {
-    min-height: 350px;
-  }
-  .navigation {
-    text-align: right;
-    padding: 5px;
-    background: #f2f2f2;
-  }
+      .header {
+          .lead;
+          height:50px;
+          min-height:40px;
+          max-height:50px;
+          background:#f2f2f2;
+          border-bottom:1px solid #ccc;
+          padding:14px 0 0 20px;
+      }
+
+      .content {
+          padding: 20px;
+          max-height: 515px !important;
+          overflow-y: auto;
+          margin-top: -20px;
+      }
+
+      .navigation {
+          .container;
+          height:50px;
+          min-height:50px;
+          max-height:50px;
+          background:#f2f2f2;
+          border-top:1px solid #ccc;
+          clear: both;
+          position: absolute;
+          bottom: 0px;
+
+                table {
+                    width:940px;
+                    margin-top: 10px;
+
+                    tr {
+
+                    }
+                }
+      }
 }
