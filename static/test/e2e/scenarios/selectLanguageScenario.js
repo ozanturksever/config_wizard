@@ -11,9 +11,7 @@ describe('Select Language Step', function () {
         element('#select_turkish_btn').click()
         expect(element('#selectedLanguage').text()).toBe('tr');
     });
-    iit('can list posible languages', function( ) {
-
-        pause();
+    it('can list posible languages', function( ) {
        expect(repeater('ul li').count()).toBe(2)
     });
 
