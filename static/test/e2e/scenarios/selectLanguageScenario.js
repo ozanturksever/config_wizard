@@ -7,12 +7,12 @@ describe('Select Language Step', function () {
         expect(browser().location().url()).toBe('/selectLanguage');
     });
 
-    xit('can select turkish', function () {
-        element('#select_turkish_btn').click()
-        expect(element('#selectedLanguage').text()).toBe('tr');
+    it('can select turkish', function () {
+        element('#select_tr_link').click
+        expect(element('#selectedLanguage').text()).toBe('Turkish');
     });
     it('can list posible languages', function( ) {
-       expect(repeater('ul li').count()).toBe(2)
+       expect(repeater('ul li').count()).toBe(2);
     });
 
 });

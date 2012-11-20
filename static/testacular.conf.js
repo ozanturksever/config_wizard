@@ -11,7 +11,7 @@ files = [
     'test/*.js'
 ];
 
-port = 8088;
+port = 9090;
 
 autoWatch = true;
 

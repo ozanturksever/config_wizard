@@ -1,6 +1,7 @@
 function SelectLanguageCtrl($scope, $http) {
-    $scope.selectedLanguage = 'tr';
+    $scope.selectedLanguage = 'Turkish';
     $scope.supportedLanguages = [];
+
     $http.get('/supported_languages').success(function(data) {
         $scope.supportedLanguages = data;
     })
