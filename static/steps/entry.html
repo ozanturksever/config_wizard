@@ -1,21 +1,32 @@
-<div id="entry">
+<div ng-controller="WizardCtrl" id="entry">
     <div class="logo">
         <img src="/img/logo.png" alt="logo"/>
     </div>
+
+    <!--
+    <ul ng-repeat="language in supportedLanguages">
+        <li><button ng-click="selectLanguage(language.text)" id="select_{{ language.key }}_link">{{ language.text }}</button></li>
+    </ul>
+    -->
+
+    <button ng-click="changeLanguage('tr')" id="select_tr_button">{{"Turkish" | i18n}}</button>
+    <button ng-click="changeLanguage('en')" id="select_en_button">{{"English" | i18n}}</button>
+
     <h3>
-        Wellcome to Logsign Configuration Wizard!.
+        {{ "Wellcome to Logsign Configuration Wizard!" | i18n }}
     </h3>
 
     <p>
-        Thank you for using Logsign.
-        Here are the steps that what you need to specify.
-    <ul class="unstyled">
-        <li><i class="icon-minus"></i>Configuration Management</li>
-        <li><i class="icon-minus"></i>Passwords</li>
-        <li><i class="icon-minus"></i>Network Configuration</li>
-        <li><i class="icon-minus"></i>License</li>
-        <li><i class="icon-minus"></i>Mail/SMS Settings</li>
-        <li><i class="icon-minus"></i>Senders</li>
-    </ul>
+        {{ "Thank you for using Logsign." | i18n }} <br>
+        {{ "Here are the steps that what you need to specify." | i18n }}
+
+        <ul class="unstyled">
+            <li><i class="icon-minus"></i>{{ "Configuration Management" | i18n }}</li>
+            <li><i class="icon-minus"></i>{{ "Passwords" | i18n }}</li>
+            <li><i class="icon-minus"></i>{{ "Check Internet Connection" | i18n }}</li>
+            <li><i class="icon-minus"></i>{{ "License" | i18n }}</li>
+            <li><i class="icon-minus"></i>{{ "Mail/SMS Settings" | i18n }}</li>
+            <li><i class="icon-minus"></i>{{ "Sender Configuration" | i18n }}</li>
+        </ul>
     </p>
 </div>

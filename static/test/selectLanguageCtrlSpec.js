@@ -16,12 +16,12 @@ describe('Language Selection Test', function () {
     });
 
     it('can select language', function () {
-        scope.selectLanguage('tr')
-        expect(scope.selectedLanguage).toBe('tr')
+        scope.selectLanguage('Turkish')
+        expect(scope.selectedLanguage).toBe('Turkish')
     });
 
     it('defatuls to tr', function(){
-        expect(scope.selectedLanguage).toBe('tr')
+        expect(scope.selectedLanguage).toBe('Turkish')
     });
 
 })
