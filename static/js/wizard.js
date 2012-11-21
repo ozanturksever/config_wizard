@@ -1,25 +1,25 @@
 var app = angular.module('wizard', [])
     .filter('i18n', ['$rootScope', '$http', function($rootScope,$http) {
-        var msgIds ={};
-        $http.get('/get_msg_ids').success(function(data) {
-            msgIds = data;
-        })
-        return function (input) {
-            try {
-                var currentLanguage = $rootScope.currentLanguage || 'en';
-                return msgIds[currentLanguage][input];
-            }catch (err) {
-            }
+    var msgIds ={};
+    $http.get('/get_msg_ids').success(function(data) {
+        msgIds = data;
+    })
+    return function (input) {
+        try {
+            var currentLanguage = $rootScope.currentLanguage || 'en';
+            return msgIds[currentLanguage][input];
+        }catch (err) {
         }
-    }]);
+    }
+}]);
 
-    app.config(function ($routeProvider) {
-        $routeProvider.
-            when('/', {templateUrl:"steps/entry.html"}).
-            when('/selectLanguage', {templateUrl:"steps/select_language.html"}).
-            when('/configFileSelection', {templateUrl:"steps/config_file_selection.html"}).
-            otherwise({redirectTo:'/'})
-    });
+app.config(function ($routeProvider) {
+    $routeProvider.
+        when('/', {templateUrl:"steps/entry.html"}).
+        when('/configFileSelection', {templateUrl:"steps/config_file_selection.html"}).
+        when('/passwordSet', {templateUrl:"steps/password_set.html"}).
+        otherwise({redirectTo:'/'})
+});
 
 
 function WizardCtrl($rootScope,$scope, $location, $http) {

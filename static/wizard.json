@@ -1,14 +1,14 @@
 {
     "/":{
-        "next":"/selectLanguage",
-        "prev":"/"
-    },
-    "/selectLanguage":{
         "next":"/configFileSelection",
         "prev":"/"
     },
-    "/configFileSelection": {
-        "next":"/finish",
-        "prev":"/selectLanguage"
+    "/configFileSelection":{
+        "next":"/passwordSet",
+        "prev":"/"
+    },
+    "/passwordSet":{
+        "next":"/",
+        "prev":"/configFileSelection"
     }
 }

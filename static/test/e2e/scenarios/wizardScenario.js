@@ -19,17 +19,17 @@ describe('Entry', function () {
 
     it('should go to next step', function () {
         element('button#goToNextStep').click();
-        expect(browser().location().url()).toBe('/selectLanguage');
+        expect(browser().location().url()).toBe('/configFileSelection');
     });
 
-    it('should go to config file selection when in select language', function() {
+    xit('should go to config file selection when in select language', function() {
         browser().navigateTo(url+'#/selectLanguage');
         element('#goToNextStep').click();
         expect(browser().location().url()).toBe('/configFileSelection');
     });
 
     it('should go to prev step', function() {
-        browser().navigateTo(url+'#/selectLanguage');
+        browser().navigateTo(url+'#/configFileSelection');
         element('#goToPrevStep').click();
         expect(browser().location().url()).toBe('/');
     });
