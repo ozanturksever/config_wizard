@@ -1,57 +1,25 @@
 var app = angular.module('wizard', [])
-    .filter('i18n', ['$rootScope', function($rootScope) {
-        return function (input) {
-            var translations = {
-                "tr" : {
-                    "Wellcome to Logsign Configuration Wizard!" : "Logsign Konfigurasyon Sihirbazina Hosgeldiniz!",
-                    "Thank you for using Logsign." : "Logsign'i kullandiginiz icin tesekkur ederiz.",
-                    "Here are the steps that what you need to specify." : "Iste belirlemeniz gereken adimlar.",
-                    "Turkish" : "Turkish",
-                    "English" : "English",
-                    "Configuration Management" : "Konfigurasyon Yonetimi",
-                    "Passwords" : "Sifreler",
-                    "Check Internet Connection" : "Internet Baglantisi Kontrolu",
-                    "License" : "Lisans",
-                    "Mail/SMS Settings" : "Mail/SMS Ayarlari",
-                    "Sender Configuration" : "Kaynak Konfigurasyonlari",
-                    "Welcome to Logsign." : "Logsign'a Hosgeldiniz.",
-                    "Select your language!" : "Lütfen bir dil seçiniz!",
-                    "Do you have a configuration backup file?" : "Konfigürasyon dosyanız var mı?",
-                    "Yes" : "Evet",
-                    "No" : "Hayır",
-                },
-                "en" : {
-                    "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
-                    "Thank you for using Logsign." : "Thank you for using Logsign.",
-                    "Here are the steps that what you need to specify." : "Here are the steps that what you need to specify.",
-                    "Turkish" : "Turkish",
-                    "English" : "English",
-                    "Configuration Management" : "Configuration Management",
-                    "Passwords" : "Passwords",
-                    "Check Internet Connection" : "Check Internet Connection",
-                    "License" : "License",
-                    "Mail/SMS Settings" : "Mail/SMS Settings",
-                    "Sender Configuration" : "Sender Configuration",
-                    "Welcome to Logsign." : "Welcome to Logsign.",
-                    "Select your language!" : "Select your language!",
-                    "Do you have a configuration backup file?" : "Do you have a configuration backup file?",
-                    "Yes" : "Yes",
-                    "No" : "No",
-                }
-            },
-            currentLanguage = $rootScope.currentLanguage || 'en';
-            return translations[currentLanguage][input];
+    .filter('i18n', ['$rootScope', '$http', function($rootScope,$http) {
+    var msgIds ={};
+    $http.get('/get_msg_ids').success(function(data) {
+        msgIds = data;
+    })
+    return function (input) {
+        try {
+            var currentLanguage = $rootScope.currentLanguage || 'en';
+            return msgIds[currentLanguage][input];
+        }catch (err) {
         }
-    }]);
+    }
+}]);
 
-    app.config(function ($routeProvider) {
-        $routeProvider.
-            when('/', {templateUrl:"steps/entry.html"}).
-            when('/selectLanguage', {templateUrl:"steps/select_language.html"}).
-            when('/configFileSelection', {templateUrl:"steps/config_file_selection.html"}).
-            when('/passwordSet', {templateUrl:"steps/password_set.html"}).
-            otherwise({redirectTo:'/'})
-    });
+app.config(function ($routeProvider) {
+    $routeProvider.
+        when('/', {templateUrl:"steps/entry.html"}).
+        when('/configFileSelection', {templateUrl:"steps/config_file_selection.html"}).
+        when('/passwordSet', {templateUrl:"steps/password_set.html"}).
+        otherwise({redirectTo:'/'})
+});
 
 
 function WizardCtrl($rootScope,$scope, $location, $http) {
