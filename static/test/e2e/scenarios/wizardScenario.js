@@ -9,7 +9,7 @@ describe('Entry', function () {
 
     it('can select turkish', function () {
         element('#select_tr_button').click();
-        expect(binding('"Thank you for using Logsign." | i18n')).toBe('Logsign\'i kullandiginiz icin tesekkur ederiz.');
+        expect(binding('"Next" | i18n')).toBe('Sonraki');
     })
 
     it('can select english', function () {

@@ -1,8 +1,11 @@
 var app = angular.module('wizard', [])
     .filter('i18n', ['$rootScope', function($rootScope) {
     return function (input) {
-        var currentLanguage = $rootScope.currentLanguage || 'en';
-        return $rootScope.msgIds[currentLanguage][input];
+        try {
+            var currentLanguage = $rootScope.currentLanguage || 'en';
+            return $rootScope.msgIds[currentLanguage][input];
+        }catch(err){
+        }
     }
 }]);
 
