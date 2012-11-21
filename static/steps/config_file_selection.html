@@ -1,5 +1,20 @@
 <div ng-controller="ConfigFileSelectionCtrl">
-    <button id="yesBtn" ng-click="will_upload = true;">Yes</button>
+    <div class="alert">
+        <strong>Warning!</strong>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Cras bibendum hendrerit vulputate.
+        Duis blandit rhoncus ligula, a varius mi condimentum non.
+        Integer tincidunt nunc ac metus varius varius.
+    </div>
+    <h3>
+        {{ "Do you have a configuration backup file?" | i18n }}
+    </h3>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum hendrerit vulputate.
+    Duis blandit rhoncus ligula, a varius mi condimentum non. Integer tincidunt nunc ac metus varius varius.
+    <br /><br />
+    <button id="yesBtn" class="btn btn-small btn-success" ng-click="will_upload = true;">{{ "Yes" | i18n }}</button>
+    <button id="noBtn" class="btn btn-small btn-danger">{{ "No" | i18n }}</button>
+
 
     <form id="uploadForm" ng-show="will_upload == true">
         <input type="file">
