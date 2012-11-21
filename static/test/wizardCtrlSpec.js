@@ -8,12 +8,16 @@ describe('wizard', function () {
         $httpBackend.expectGET('wizard.json').respond(
             {
                 '/':{
-                    'next':'/selectLanguage',
-                    'prev':'/'
-                },
-                '/selectLanguage':{
                     'next':'/configFileSelection',
                     'prev':'/'
+                },
+                '/configFileSelection':{
+                    'next':'/passwordSet',
+                    'prev':'/'
+                },
+                '/passwordSet':{
+                    'next':'/',
+                    'prev':'/configFileSelection'
                 }
             }
         );
@@ -29,20 +33,20 @@ describe('wizard', function () {
     }));
 
     it('should go next/prev when called', function () {
-        scope.goToNext()
-        expect($location.$$path).toBe('/selectLanguage')
-        scope.goToPrev()
-        expect($location.$$path).toBe('/')
+        scope.goToNext();
+        expect($location.$$path).toBe('/configFileSelection');
+        scope.goToPrev();
+        expect($location.$$path).toBe('/');
     })
 
     it('should change to next step', function () {
         scope.goToNext();
-        expect($location.$$path).toBe('/selectLanguage');
+        expect($location.$$path).toBe('/configFileSelection');
     });
 
-    it('should go configFileSelection when in selectLanguage', function () {
-        $location.path('/selectLanguage')
+    it('should go passwordSet when in configFileSelection', function () {
+        $location.path('/configFileSelection');
         scope.goToNext();
-        expect($location.$$path).toBe('/configFileSelection');
+        expect($location.$$path).toBe('/passwordSet');
     });
 });

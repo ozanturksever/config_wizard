@@ -12,9 +12,9 @@
         <script src="/lib/underscore-min.js"></script>
         <script src="/lib/angular/angular.js"></script>
         <script src="/lib/angular/angular-resource.js"></script>
-        <script src="/js/selectLanguage.js"></script>
         <script src="/js/configFileSelection.js"></script>
         <script src="/js/wizard.js"></script>
+        <script src="/js/passwordSet.js"></script>
     </head>
 
     <body ng-controller="WizardCtrl">
@@ -23,7 +23,7 @@
 
             <div id="config_wizard_container">
 
-                <div class="header">header</div>
+                <div class="header">{{ header }}</div>
 
                 <div class="content">
                     <ng-view></ng-view>
