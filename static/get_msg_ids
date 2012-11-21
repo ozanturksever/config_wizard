@@ -1,13 +1,13 @@
 {
     "tr" : {
         "Wellcome to Logsign Configuration Wizard!" : "Logsign Konfigürasyon Sihirbazına Hoşgeldiniz!",
-        "Thank you for using Logsign." : "Logsign'i kullandığınız için teşekkür ederiz.",
-        "Here are the steps that what you need to specify." : "Işte belirlemeniz gereken adimlar.",
+        "Thank you for using Logsign." : "Logsign'ı kullandığınız için teşekkür ederiz.",
+        "Here are the steps that what you need to specify." : "İşte belirlemeniz gereken adimlar.",
         "Turkish" : "Türkçe",
         "English" : "English",
         "Configuration Management" : "Konfigürasyon Yönetimi",
         "Passwords" : "Sifreler",
-        "Check Internet Connection" : "Internet Bağlantısı Kontrolü",
+        "Check Internet Connection" : "İnternet Bağlantısı Kontrolü",
         "License" : "Lisans",
         "Mail/SMS Settings" : "Mail/SMS Ayarları",
         "Sender Configuration" : "Kaynak Konfigürasyonları",
@@ -18,7 +18,15 @@
         "Previous" : "Önceki",
         "Select your language!" : "Dil seçimi!",
         "Skip" : "Atla",
-        "Change your passwords for your safety!" : "Güvenliğiniz için şifrelerinizi değistirin!"
+        "Change your passwords for your safety!" : "Güvenliğiniz için şifrelerinizi değistirin!",
+        "Password For \"iadmin\"" : "\"iadmin\" için şifre",
+        "Password For \"admin\"" : "\"admin\" için şifre",
+        "New password" : "Yeni şifre",
+        "Confirm password" : "Şifreyi onayı",
+        "Save" : "Kaydet",
+        "Add" : "Ekle",
+        "Edit" : "Düzenle",
+        "Delete" : "Sil"
     },
     "en" : {
         "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
@@ -39,6 +47,14 @@
         "Previous" : "Previous",
         "Select your language!" : "Select your language!",
         "Skip" : "Skip",
-        "Change your passwords for your safety!" : "Change your passwords for your safety!"
+        "Change your passwords for your safety!" : "Change your passwords for your safety!",
+        "Password For \"iadmin\"" : "Password For \"iadmin\"",
+        "Password For \"admin\"" : "Password For \"admin\"",
+        "New password" : "New password",
+        "Confirm password" : "Confirm password",
+        "Save" : "Save",
+        "Add" : "Add",
+        "Edit" : "Edit",
+        "Delete" : "Delete"
     }
 }

@@ -18,18 +18,10 @@
     </head>
 
     <body ng-controller="WizardCtrl">
-
         <div id="content" isloaded="{{ loaded }}">
-
             <div id="config_wizard_container">
-
                 <div class="header">{{ header }}</div>
-
-                <div class="content">
-
-                    <ng-view></ng-view>
-                </div>
-
+                <div class="content"> <ng-view></ng-view> </div>
                 <div class="navigation">
                     <table>
                         <tr>
@@ -46,11 +38,7 @@
                         </tr>
                     </table>
                 </div>
-
             </div>
-
         </div>
-
     </body>
-
 </html>
