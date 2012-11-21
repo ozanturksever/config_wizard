@@ -1,36 +1,15 @@
 var app = angular.module('wizard', [])
-    .filter('i18n', ['$rootScope', function($rootScope) {
+    .filter('i18n', ['$rootScope', '$http', function($rootScope,$http) {
+        var msgIds ={};
+        $http.get('/get_msg_ids').success(function(data) {
+            msgIds = data;
+        })
         return function (input) {
-            var translations = {
-                "tr" : {
-                    "Wellcome to Logsign Configuration Wizard!" : "Logsign Konfigurasyon Sihirbazina Hosgeldiniz!",
-                    "Thank you for using Logsign." : "Logsign'i kullandiginiz icin tesekkur ederiz.",
-                    "Here are the steps that what you need to specify." : "Iste belirlemeniz gereken adimlar.",
-                    "Turkish" : "Turkish",
-                    "English" : "English",
-                    "Configuration Management" : "Konfigurasyon Yonetimi",
-                    "Passwords" : "Sifreler",
-                    "Check Internet Connection" : "Internet Baglantisi Kontrolu",
-                    "License" : "Lisans",
-                    "Mail/SMS Settings" : "Mail/SMS Ayarlari",
-                    "Sender Configuration" : "Kaynak Konfigurasyonlari"
-                },
-                "en" : {
-                    "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
-                    "Thank you for using Logsign." : "Thank you for using Logsign.",
-                    "Here are the steps that what you need to specify." : "Here are the steps that what you need to specify.",
-                    "Turkish" : "Turkish",
-                    "English" : "English",
-                    "Configuration Management" : "Configuration Management",
-                    "Passwords" : "Passwords",
-                    "Check Internet Connection" : "Check Internet Connection",
-                    "License" : "License",
-                    "Mail/SMS Settings" : "Mail/SMS Settings",
-                    "Sender Configuration" : "Sender Configuration"
-                }
-            },
-            currentLanguage = $rootScope.currentLanguage || 'en';
-            return translations[currentLanguage][input];
+            try {
+                var currentLanguage = $rootScope.currentLanguage || 'en';
+                return msgIds[currentLanguage][input];
+            }catch (err) {
+            }
         }
     }]);
 
