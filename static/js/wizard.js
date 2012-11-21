@@ -13,7 +13,9 @@ var app = angular.module('wizard', [])
                     "Check Internet Connection" : "Internet Baglantisi Kontrolu",
                     "License" : "Lisans",
                     "Mail/SMS Settings" : "Mail/SMS Ayarlari",
-                    "Sender Configuration" : "Kaynak Konfigurasyonlari"
+                    "Sender Configuration" : "Kaynak Konfigurasyonlari",
+                    "Welcome to Logsign." : "Logsign'a Hosgeldiniz."
+
                 },
                 "en" : {
                     "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
@@ -26,7 +28,8 @@ var app = angular.module('wizard', [])
                     "Check Internet Connection" : "Check Internet Connection",
                     "License" : "License",
                     "Mail/SMS Settings" : "Mail/SMS Settings",
-                    "Sender Configuration" : "Sender Configuration"
+                    "Sender Configuration" : "Sender Configuration",
+                    "Welcome to Logsign." : "Welcome to Logsign."
                 }
             },
             currentLanguage = $rootScope.currentLanguage || 'en';
@@ -39,6 +42,7 @@ var app = angular.module('wizard', [])
             when('/', {templateUrl:"steps/entry.html"}).
             when('/selectLanguage', {templateUrl:"steps/select_language.html"}).
             when('/configFileSelection', {templateUrl:"steps/config_file_selection.html"}).
+            when('/passwordSet', {templateUrl:"steps/password_set.html"}).
             otherwise({redirectTo:'/'})
     });
 
