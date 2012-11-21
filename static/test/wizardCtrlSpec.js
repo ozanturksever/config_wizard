@@ -22,6 +22,19 @@ describe('wizard', function () {
             }
         );
 
+        $httpBackend.expectGET('/get_msg_ids').respond(
+            {
+                "tr" : {
+                    "Wellcome to Logsign Configuration Wizard!" : "Logsign Konfigurasyon Sihirbazina Hosgeldiniz!",
+                    "Thank you for using Logsign." : "Logsign'i kullandiginiz icin tesekkur ederiz."
+                },
+                "en" : {
+                    "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
+                    "Thank you for using Logsign." : "Thank you for using Logsign."
+                }
+            }
+        );
+
         scope = $rootScope.$new();
         ctrl = $controller(WizardCtrl, {$scope:scope});
         $httpBackend.flush();

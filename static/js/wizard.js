@@ -1,15 +1,8 @@
 var app = angular.module('wizard', [])
-    .filter('i18n', ['$rootScope', '$http', function($rootScope,$http) {
-    var msgIds ={};
-    $http.get('/get_msg_ids').success(function(data) {
-        msgIds = data;
-    })
+    .filter('i18n', ['$rootScope', function($rootScope) {
     return function (input) {
-        try {
-            var currentLanguage = $rootScope.currentLanguage || 'en';
-            return msgIds[currentLanguage][input];
-        }catch (err) {
-        }
+        var currentLanguage = $rootScope.currentLanguage || 'en';
+        return $rootScope.msgIds[currentLanguage][input];
     }
 }]);
 
@@ -53,5 +46,11 @@ function WizardCtrl($rootScope,$scope, $location, $http) {
         }
         return {'next':next, 'prev':prev}
     }
+
+    $scope.msgIds = {};
+
+    $http.get('/get_msg_ids').success(function(data) {
+       $rootScope.msgIds = data;
+    });
 }
 
