@@ -13,7 +13,8 @@ var app = angular.module('wizard', [])
                     "Check Internet Connection" : "Internet Baglantisi Kontrolu",
                     "License" : "Lisans",
                     "Mail/SMS Settings" : "Mail/SMS Ayarlari",
-                    "Sender Configuration" : "Kaynak Konfigurasyonlari"
+                    "Sender Configuration" : "Kaynak Konfigurasyonlari",
+                    "Select your language!" : "Lütfen bir dil seçiniz!"
                 },
                 "en" : {
                     "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
@@ -26,7 +27,8 @@ var app = angular.module('wizard', [])
                     "Check Internet Connection" : "Check Internet Connection",
                     "License" : "License",
                     "Mail/SMS Settings" : "Mail/SMS Settings",
-                    "Sender Configuration" : "Sender Configuration"
+                    "Sender Configuration" : "Sender Configuration",
+                    "Select your language!" : "Select your language!"
                 }
             },
             currentLanguage = $rootScope.currentLanguage || 'en';
