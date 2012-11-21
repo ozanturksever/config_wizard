@@ -14,8 +14,11 @@ var app = angular.module('wizard', [])
                     "License" : "Lisans",
                     "Mail/SMS Settings" : "Mail/SMS Ayarlari",
                     "Sender Configuration" : "Kaynak Konfigurasyonlari",
-                    "Welcome to Logsign." : "Logsign'a Hosgeldiniz."
-
+                    "Welcome to Logsign." : "Logsign'a Hosgeldiniz.",
+                    "Select your language!" : "Lütfen bir dil seçiniz!",
+                    "Do you have a configuration backup file?" : "Konfigürasyon dosyanız var mı?",
+                    "Yes" : "Evet",
+                    "No" : "Hayır",
                 },
                 "en" : {
                     "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
@@ -29,7 +32,11 @@ var app = angular.module('wizard', [])
                     "License" : "License",
                     "Mail/SMS Settings" : "Mail/SMS Settings",
                     "Sender Configuration" : "Sender Configuration",
-                    "Welcome to Logsign." : "Welcome to Logsign."
+                    "Welcome to Logsign." : "Welcome to Logsign.",
+                    "Select your language!" : "Select your language!",
+                    "Do you have a configuration backup file?" : "Do you have a configuration backup file?",
+                    "Yes" : "Yes",
+                    "No" : "No",
                 }
             },
             currentLanguage = $rootScope.currentLanguage || 'en';
