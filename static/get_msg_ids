@@ -1,5 +1,6 @@
 {
     "tr" : {
+        "Welcome." : "Hoşgeldiniz.",
         "Language" : "Turkish",
         "Wellcome to Logsign Configuration Wizard!" : "Logsign Konfigürasyon Sihirbazına Hoşgeldiniz!",
         "Thank you for using Logsign." : "Logsign'ı kullandığınız için teşekkür ederiz.",
@@ -30,6 +31,7 @@
         "Delete" : "Sil"
     },
     "en" : {
+        "Welcome." : "Welcome.",
         "Language" : "English",
         "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
         "Thank you for using Logsign." : "Thank you for using Logsign.",

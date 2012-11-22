@@ -1,33 +1,43 @@
-var app = angular.module('wizard', [])
-    .filter('i18n', ['$rootScope', function($rootScope) {
+var app = angular.module('wizard', []);
+
+app.filter('i18n', ['$rootScope', function ($rootScope) {
     return function (input) {
         try {
-            var currentLanguage = $rootScope.currentLanguage || 'en';
+//            console.log('ss', $rootScope.configData['language']);
+            var currentLanguage = $rootScope.configData['language'];
             return $rootScope.msgIds[currentLanguage][input];
-        }catch(err){
+        } catch (err) {
         }
     }
 }]);
 
 app.config(function ($routeProvider) {
     $routeProvider.
-        when('/', {templateUrl:"steps/entry.html"}).
+        when('/', {
+            templateUrl:"steps/entry.html",
+            resolve:WizardCtrl.resolve
+        }
+    ).
         when('/configFileSelection', {templateUrl:"steps/config_file_selection.html"}).
         when('/passwordSet', {templateUrl:"steps/password_set.html"}).
         otherwise({redirectTo:'/'})
-});
+})
+;
 
-
-function WizardCtrl($rootScope,$scope, $location, $http) {
-    console.log('yarak kurek');
+function WizardCtrl($rootScope, $scope, $location, $http) {
+    $rootScope.configData = {};
+//    $rootScope.msgIds = msgIds;
+//    $scope.msgIdService = msgIdService
+    $scope.header = 'Welcome.';
 
     $scope.changeLanguage = function (lang) {
-        $rootScope.currentLanguage = lang;
+//        $rootScope.currentLanguage = lang;
+        $rootScope.configData['language'] = lang;
     }
 
     $scope.routeRules = {};
 
-    $http.get('wizard.json').success(function(data) {
+    $http.get('wizard.json').success(function (data) {
         $scope.routeRules = data;
     });
 
@@ -52,9 +62,16 @@ function WizardCtrl($rootScope,$scope, $location, $http) {
         return {'next':next, 'prev':prev}
     }
 
-    $http.get('/get_msg_ids').success(function(data) {
-        $rootScope.msgIds = data;
-        $scope.msgIds = data;
-    });
 }
-
+WizardCtrl.resolve = {
+    msgIds:function loadMsgId($rootScope, $q, $http) {
+        var deffer = $q.defer();
+        var success = function (data) {
+            deffer.resolve(data);
+            $rootScope.msgIds = data;
+        };
+        $http.get('/get_msg_ids').success(success);
+        return deffer.promise;
+    }
+}
+//WizardCtrl.$inject = ['msgIdService'];

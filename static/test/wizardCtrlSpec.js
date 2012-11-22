@@ -62,4 +62,11 @@ describe('wizard', function () {
         scope.goToNext();
         expect($location.$$path).toBe('/passwordSet');
     });
+
+    it('should select language as tr',function(){
+        $location.path('/');
+        scope.changeLanguage('tr');
+        expect(scope.currentLanguage).toBe('tr');
+    });
+
 });

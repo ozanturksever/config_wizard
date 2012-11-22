@@ -7,14 +7,15 @@ describe('Entry', function () {
         expect(browser().location().url()).toBe('/');
     })
 
-    it('can select turkish', function () {
-        element('#select_tr_button').click();
-        expect(binding('"Next" | i18n')).toBe('Sonraki');
-    })
-
     it('can select english', function () {
         element('#select_en_button').click();
         expect(binding('"Thank you for using Logsign." | i18n')).toBe('Thank you for using Logsign.');
+        expect(element('#header').html()).toBe('Welcome.');
+    })
+
+    it('can select turkish', function () {
+        element('#select_tr_button').click();
+        expect(binding('"Next" | i18n')).toBe('Sonraki');
     })
 
     it('should go to next step', function () {
@@ -22,7 +23,7 @@ describe('Entry', function () {
         expect(browser().location().url()).toBe('/configFileSelection');
     });
 
-    xit('should go to config file selection when in select language', function() {
+    it('should go to config file selection when in select language', function() {
         browser().navigateTo(url+'#/selectLanguage');
         element('#goToNextStep').click();
         expect(browser().location().url()).toBe('/configFileSelection');

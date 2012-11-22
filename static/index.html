@@ -22,7 +22,7 @@
     <body ng-controller="WizardCtrl">
         <div id="content" isloaded="{{ loaded }}">
             <div id="config_wizard_container">
-                <div class="header">test</div>
+                <div id="header" class="header">{{ header | i18n }}</div>
                 <div class="content"> <ng-view></ng-view> </div>
 
                 <div class="navigation">

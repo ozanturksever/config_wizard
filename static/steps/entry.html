@@ -6,9 +6,10 @@
 
     <h3>
         {{ "Select your language!" | i18n }}
+        lang: {{ configData.language }} msgId:{{ msgIdService }}
     </h3>
 
-    <button class="btn btn-small" ng-repeat="(key,val) in msgIds" ng-click="changeLanguage(key)">{{val.Language}}</button>
+    <button class="btn btn-small" ng-repeat="(key,val) in msgIds" ng-click="changeLanguage(key)" id="select_{{key}}_button">{{val.Language}}</button>
 
 
     <h3>
