@@ -1,21 +1,15 @@
-<div ng-controller="WizardCtrl" id="entry">
+<div id="entry">
 
     <div class="logo">
         <img src="/img/logo.png" alt="logo"/>
     </div>
 
-    <!--
-    <ul ng-repeat="language in supportedLanguages">
-        <li><button ng-click="selectLanguage(language.text)" id="select_{{ language.key }}_link">{{ language.text }}</button></li>
-    </ul>
-    -->
-
     <h3>
         {{ "Select your language!" | i18n }}
     </h3>
 
-    <button class="btn btn-small" ng-click="changeLanguage('tr')" id="select_tr_button">{{"Turkish" | i18n}}</button>
-    <button class="btn btn-small" ng-click="changeLanguage('en')" id="select_en_button">{{"English" | i18n}}</button>
+    <button class="btn btn-small" ng-repeat="(key,val) in msgIds" ng-click="changeLanguage(key)">{{val.Language}}</button>
+
 
     <h3>
         {{ "Wellcome to Logsign Configuration Wizard!" | i18n }}

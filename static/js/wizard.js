@@ -19,6 +19,8 @@ app.config(function ($routeProvider) {
 
 
 function WizardCtrl($rootScope,$scope, $location, $http) {
+    console.log('yarak kurek');
+
     $scope.changeLanguage = function (lang) {
         $rootScope.currentLanguage = lang;
     }
@@ -50,10 +52,9 @@ function WizardCtrl($rootScope,$scope, $location, $http) {
         return {'next':next, 'prev':prev}
     }
 
-    $scope.msgIds = {};
-
     $http.get('/get_msg_ids').success(function(data) {
-       $rootScope.msgIds = data;
+        $rootScope.msgIds = data;
+        $scope.msgIds = data;
     });
 }
 

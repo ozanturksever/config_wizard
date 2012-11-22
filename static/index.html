@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>Logsign Configuration Wizard</title>
+
         <link rel="stylesheet/less" href="/css/config_wizard.less">
         <link rel="stylesheet/less" href="/css/entry.less">
 
@@ -12,6 +13,7 @@
         <script src="/lib/underscore-min.js"></script>
         <script src="/lib/angular/angular.js"></script>
         <script src="/lib/angular/angular-resource.js"></script>
+
         <script src="/js/configFileSelection.js"></script>
         <script src="/js/wizard.js"></script>
         <script src="/js/passwordSet.js"></script>
@@ -20,8 +22,9 @@
     <body ng-controller="WizardCtrl">
         <div id="content" isloaded="{{ loaded }}">
             <div id="config_wizard_container">
-                <div class="header">{{ header }}</div>
+                <div class="header">test</div>
                 <div class="content"> <ng-view></ng-view> </div>
+
                 <div class="navigation">
                     <table>
                         <tr>
