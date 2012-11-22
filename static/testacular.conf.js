@@ -15,7 +15,7 @@ port = 9090;
 
 autoWatch = false;
 
-browsers = ['Firefox'];
+browsers = ['Chrome'];
 
 junitReporter = {
     outputFile:'test_out/unit.xml',

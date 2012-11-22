@@ -1,37 +1,45 @@
 var app = angular.module('wizard', []);
 
-app.filter('i18n', ['$rootScope', function ($rootScope) {
-    return function (input) {
-        try {
-//            console.log('ss', $rootScope.configData['language']);
-            var currentLanguage = $rootScope.configData['language'];
-            return $rootScope.msgIds[currentLanguage][input];
-        } catch (err) {
-        }
-    }
-}]);
-
 app.config(function ($routeProvider) {
     $routeProvider.
         when('/', {
+            resolve:{
+                msgIds:function ($q, $http,$timeout) {
+                    var deffer = $q.defer();
+                    var success = function (data) {
+                        deffer.resolve(data);
+                    };
+                    $http.get('/get_msg_ids').success(success);
+
+                    return deffer.promise;
+                }
+            },
             templateUrl:"steps/entry.html",
-            resolve:WizardCtrl.resolve
+            controller:function ($rootScope, msgIds) {
+                $rootScope.msgIds = msgIds;
+            }
         }
     ).
         when('/configFileSelection', {templateUrl:"steps/config_file_selection.html"}).
         when('/passwordSet', {templateUrl:"steps/password_set.html"}).
         otherwise({redirectTo:'/'})
-})
-;
+});
+
+app.filter('i18n', ['$rootScope', function ($rootScope) {
+    return function (input) {
+        if ($rootScope.msgIds == undefined ) {
+            return
+        }
+        var currentLanguage = $rootScope.configData['language'] || 'en';
+        return $rootScope.msgIds[currentLanguage][input];
+    }
+}]);
 
 function WizardCtrl($rootScope, $scope, $location, $http) {
-    $rootScope.configData = {};
-//    $rootScope.msgIds = msgIds;
-//    $scope.msgIdService = msgIdService
+    $rootScope.configData = {'language':'en'};
     $scope.header = 'Welcome.';
 
     $scope.changeLanguage = function (lang) {
-//        $rootScope.currentLanguage = lang;
         $rootScope.configData['language'] = lang;
     }
 
@@ -63,15 +71,3 @@ function WizardCtrl($rootScope, $scope, $location, $http) {
     }
 
 }
-WizardCtrl.resolve = {
-    msgIds:function loadMsgId($rootScope, $q, $http) {
-        var deffer = $q.defer();
-        var success = function (data) {
-            deffer.resolve(data);
-            $rootScope.msgIds = data;
-        };
-        $http.get('/get_msg_ids').success(success);
-        return deffer.promise;
-    }
-}
-//WizardCtrl.$inject = ['msgIdService'];
