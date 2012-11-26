@@ -1,33 +1,37 @@
-var app = angular.module('wizard', []);
+var app = angular.module('wizard', ['config']);
+
+app.factory('load_language',
+    function ($rootScope, $q, $http, $timeout, LANGUAGE_DATA_URL) {
+        var deffer = $q.defer();
+        var success = function (data) {
+            $rootScope.msgIds = data;
+            deffer.resolve(data);
+        };
+        $http.get(LANGUAGE_DATA_URL).success(success);
+
+        return deffer.promise;
+    });
 
 app.config(function ($routeProvider) {
     $routeProvider.
         when('/', {
-            resolve:{
-                msgIds:function ($q, $http,$timeout) {
-                    var deffer = $q.defer();
-                    var success = function (data) {
-                        deffer.resolve(data);
-                    };
-                    $http.get('/get_msg_ids').success(success);
-
-                    return deffer.promise;
-                }
-            },
             templateUrl:"steps/entry.html",
-            controller:function ($rootScope, msgIds) {
-                $rootScope.msgIds = msgIds;
-            }
-        }
-    ).
-        when('/configFileSelection', {templateUrl:"steps/config_file_selection.html"}).
-        when('/passwordSet', {templateUrl:"steps/password_set.html"}).
+            resolve:{ msgIds:'load_language' }
+        }).
+        when('/configFileSelection', {
+            templateUrl:"steps/config_file_selection.html",
+            resolve:{ msgIds:'load_language' }
+        }).
+        when('/passwordSet', {
+            templateUrl:"steps/password_set.html",
+            resolve:{ msgIds:'load_language' }
+        }).
         otherwise({redirectTo:'/'})
 });
 
 app.filter('i18n', ['$rootScope', function ($rootScope) {
     return function (input) {
-        if ($rootScope.msgIds == undefined ) {
+        if ($rootScope.msgIds == undefined) {
             return
         }
         var currentLanguage = $rootScope.configData['language'] || 'en';
@@ -35,7 +39,7 @@ app.filter('i18n', ['$rootScope', function ($rootScope) {
     }
 }]);
 
-function WizardCtrl($rootScope, $scope, $location, $http) {
+function WizardCtrl($rootScope, $scope, $location, $http, WIZARD_CONFIG_URL) {
     $rootScope.configData = {'language':'en'};
     $scope.header = 'Welcome.';
 
@@ -45,7 +49,7 @@ function WizardCtrl($rootScope, $scope, $location, $http) {
 
     $scope.routeRules = {};
 
-    $http.get('wizard.json').success(function (data) {
+    $http.get(WIZARD_CONFIG_URL).success(function (data) {
         $scope.routeRules = data;
     });
 

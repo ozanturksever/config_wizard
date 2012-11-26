@@ -4,7 +4,7 @@ describe('wizard', function () {
     var scope, ctrl, $location, routeRules, $httpBackend;
 
     beforeEach(inject(function ($rootScope, $controller, _$httpBackend_) {
-        $httpBackend = _$httpBackend_
+        $httpBackend = _$httpBackend_;
         $httpBackend.expectGET('wizard.json').respond(
             {
                 '/':{
@@ -22,18 +22,18 @@ describe('wizard', function () {
             }
         );
 
-        $httpBackend.expectGET('/get_msg_ids').respond(
-            {
-                "tr" : {
-                    "Wellcome to Logsign Configuration Wizard!" : "Logsign Konfigurasyon Sihirbazina Hosgeldiniz!",
-                    "Thank you for using Logsign." : "Logsign'i kullandiginiz icin tesekkur ederiz."
-                },
-                "en" : {
-                    "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
-                    "Thank you for using Logsign." : "Thank you for using Logsign."
-                }
-            }
-        );
+//        $httpBackend.expectGET(LANGUAGE_DATA_URL).respond(
+//            {
+//                "tr" : {
+//                    "Wellcome to Logsign Configuration Wizard!" : "Logsign Konfigurasyon Sihirbazina Hosgeldiniz!",
+//                    "Thank you for using Logsign." : "Logsign'i kullandiginiz icin tesekkur ederiz."
+//                },
+//                "en" : {
+//                    "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
+//                    "Thank you for using Logsign." : "Thank you for using Logsign."
+//                }
+//            }
+//        );
 
         scope = $rootScope.$new();
         ctrl = $controller(WizardCtrl, {$scope:scope});
@@ -66,7 +66,7 @@ describe('wizard', function () {
     it('should select language as tr',function(){
         $location.path('/');
         scope.changeLanguage('tr');
-        expect(scope.currentLanguage).toBe('tr');
+        expect(scope.configData['language']).toBe('tr');
     });
 
 });
