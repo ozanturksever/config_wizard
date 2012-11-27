@@ -15,15 +15,15 @@ app.factory('load_language',
 app.config(function ($routeProvider) {
     $routeProvider.
         when('/', {
-            templateUrl:"steps/entry.html",
+            templateUrl:"html/main.html",
             resolve:{ msgIds:'load_language' }
         }).
         when('/configFileSelection', {
-            templateUrl:"steps/config_file_selection.html",
+            templateUrl:"html/config_file_selection.html",
             resolve:{ msgIds:'load_language' }
         }).
         when('/passwordSet', {
-            templateUrl:"steps/password_set.html",
+            templateUrl:"html/about.html",
             resolve:{ msgIds:'load_language' }
         }).
         otherwise({redirectTo:'/'})

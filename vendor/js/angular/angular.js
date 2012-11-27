@@ -4592,7 +4592,7 @@ function $ControllerProvider() {
      *
      * @param {Function|string} constructor If called with a function then it's considered to be the
      *    controller constructor function. Otherwise it's considered to be a string which is used
-     *    to retrieve the controller constructor using the following steps:
+     *    to retrieve the controller constructor using the following html:
      *
      *    * check if a controller with given name is registered via `$controllerProvider`
      *    * check if evaluating the string on the current scope returns a constructor
