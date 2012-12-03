@@ -10,7 +10,6 @@ describe('Entry', function () {
     it('can select english', function () {
         element('#select_en_button').click();
         expect(binding('"Thank you for using Logsign." | i18n')).toBe('Thank you for using Logsign.');
-        expect(element('#header').html()).toBe('Welcome.');
     })
 
     it('can select turkish', function () {

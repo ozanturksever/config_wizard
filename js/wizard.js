@@ -23,7 +23,7 @@ app.config(function ($routeProvider) {
             resolve:{ msgIds:'load_language' }
         }).
         when('/passwordSet', {
-            templateUrl:"html/about.html",
+            templateUrl:"html/password_set.html",
             resolve:{ msgIds:'load_language' }
         }).
         otherwise({redirectTo:'/'})
