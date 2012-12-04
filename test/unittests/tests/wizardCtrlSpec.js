@@ -3,9 +3,11 @@
 describe('wizard', function () {
     var scope, ctrl, $location, routeRules, $httpBackend;
 
-    beforeEach(inject(function ($rootScope, $controller, _$httpBackend_) {
+    beforeEach(module('wizard'));
+    beforeEach(inject(function ($rootScope, $controller, _$httpBackend_, WIZARD_CONFIG_URL) {
         $httpBackend = _$httpBackend_;
-        $httpBackend.expectGET('wizard.json').respond(
+
+        $httpBackend.expectGET(WIZARD_CONFIG_URL).respond(
             {
                 '/':{
                     'next':'/configFileSelection',

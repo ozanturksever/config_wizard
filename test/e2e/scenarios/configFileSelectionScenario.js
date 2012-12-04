@@ -14,4 +14,10 @@ describe('Config file selection', function () {
         element('#yesBtn').click();
         expect(element('#uploadForm').css('display')).toBe('block');
     });
+
+    xit('when upload to config file must hidden upload form', function () {
+        element('#yesBtn').click();
+        element('#uploadConfigFile').click();
+        expect(element('#uploadForm').css('display')).toBe('none');
+    });
 });
