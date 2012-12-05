@@ -6,7 +6,6 @@ describe('wizard', function () {
     beforeEach(module('wizard'));
     beforeEach(inject(function ($rootScope, $controller, _$httpBackend_, WIZARD_CONFIG_URL) {
         $httpBackend = _$httpBackend_;
-
         $httpBackend.expectGET(WIZARD_CONFIG_URL).respond(
             {
                 '/':{
@@ -23,19 +22,6 @@ describe('wizard', function () {
                 }
             }
         );
-
-//        $httpBackend.expectGET(LANGUAGE_DATA_URL).respond(
-//            {
-//                "tr" : {
-//                    "Wellcome to Logsign Configuration Wizard!" : "Logsign Konfigurasyon Sihirbazina Hosgeldiniz!",
-//                    "Thank you for using Logsign." : "Logsign'i kullandiginiz icin tesekkur ederiz."
-//                },
-//                "en" : {
-//                    "Wellcome to Logsign Configuration Wizard!" : "Wellcome to Logsign Configuration Wizard!",
-//                    "Thank you for using Logsign." : "Thank you for using Logsign."
-//                }
-//            }
-//        );
 
         scope = $rootScope.$new();
         ctrl = $controller(WizardCtrl, {$scope:scope});

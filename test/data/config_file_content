@@ -1,0 +1,15 @@
+{
+    "mailConf": {
+        "from": "logsign@logsign.net",
+        "use_tls": "1",
+        "host": "smtp.gmail.com",
+        "user": "fahreddin.yapar@logsign.net",
+        "destination_address": "fahreddin.yapar@logsign.net",
+        "password": "hedehede",
+        "port": "587",
+        "backend": "django.core.mail.backends.smtp.EmailBackend"
+    },
+    "sendersConf": {
+        "192.168.1.1": "sonic,sonicwall,generic"
+    }
+}

@@ -17,6 +17,12 @@
 
 
     <form id="uploadForm" ng-show="will_upload == true">
-        <input type="file">
+        Configuration File :
+        <input type="file" ng-model-instant id="fileToUpload" onchange="angular.element(this).scope().setFiles(this)" class="btn btn-small" />
+        <div ng-show="file.name">
+            <span>{{file.name}}</span>(<span>{{file.size / 1024 | number:2}} kb</span>)
+            <input id="uploadButton" type="button" ng-click="uploadFile()" value="Upload" class="btn btn-small">
+            <div ng-show="confData">Upload Complete</div>
+        </div>
     </form>
 </div>
