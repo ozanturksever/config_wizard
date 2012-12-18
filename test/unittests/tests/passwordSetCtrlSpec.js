@@ -1,13 +1,22 @@
-xdescribe('Password set tests', function () {
-    var scope, ctrl
+describe('Password set tests', function () {
+    var scope, ctrl,$httpBackend;
+    beforeEach(module('wizard'));
+    beforeEach(inject(function($rootScope, $controller,_$httpBackend_,CHANGE_PASSWORD_URL){
+        $httpBackend = _$httpBackend_;
+        $httpBackend.expectGET(CHANGE_PASSWORD_URL).respond(
+            {
+                "success": true,
+                "message": "OK"
+            }
+        );
 
-    beforeEach(inject(function($rootScope, $controller){
         scope = $rootScope.$new();
         ctrl = $controller(PasswordSetCtrl, {$scope:scope});
-
     }))
-    it('should show password form', function () {
-        //scope.setWillUpload(true);
-        //expect(scope.will_upload).toBe(true)
+    it('when clicked save button, should show complete message', function () {
+        var obj = new Object();
+        obj.password = 'dsa';
+        obj.pass2 = 'aaa';
+        scope.submitPasswords(obj);
     });
 });
